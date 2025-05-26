@@ -1,0 +1,15 @@
+# Sistema
+.DS_Store
+
+# IDEs / editores
+.vscode/
+
+# Dependencias
+node_modules/
+
+# Entornos de Python
+__pycache__/
+*.py[cod]
+
+# Archivos de log
+*.log
