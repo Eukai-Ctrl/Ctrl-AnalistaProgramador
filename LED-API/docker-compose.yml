@@ -1,0 +1,38 @@
+version: '3.8'
+services:
+  db:
+    image: postgres:15
+    env_file:
+      - .env
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    networks:
+      - backend
+
+  python_api:
+    build: ./python_api
+    env_file:
+      - .env
+    depends_on:
+      - db
+    ports:
+      - 8000:8000
+    networks:
+      - backend
+
+  php_api:
+    build: ./php_api
+    env_file:
+      - .env
+    depends_on:
+      - db
+    ports:
+      - 8080:80
+    networks:
+      - backend
+
+volumes:
+  pgdata:
+
+networks:
+  backend:
